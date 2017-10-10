@@ -1,0 +1,4 @@
+option1 = true
+option2 = true
+option3 = true
+card = cardArtResized
