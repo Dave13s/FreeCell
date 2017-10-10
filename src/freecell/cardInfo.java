@@ -6,7 +6,6 @@ package freecell;
  */
 public class cardInfo {
 
-    // get the card color
     public String cardColor(String filename) {
 
         if (filename == null) {
@@ -25,10 +24,8 @@ public class cardInfo {
             System.out.println("ERROR passed invlaid card name: " + filename);
             return "error";
         }
-
     }
 
-    // get the suit
     public String cardSuit(String filename) {
         if (filename == null) {
             return "NULL";
@@ -48,7 +45,6 @@ public class cardInfo {
         }
     }
 
-    // get the number
     public int cardNumber(String filename) {
 
         if (filename == null) {
@@ -69,7 +65,6 @@ public class cardInfo {
         } else {
             return Integer.parseInt(Character.toString(filename.charAt(cardIndex + 1)));
         }
-
     }
 
     //this is a testing class used for debugging
@@ -80,7 +75,5 @@ public class cardInfo {
         System.out.println("Card color: " + invoke.cardColor(filename));
         System.out.println("Card suit: " + invoke.cardSuit(filename));
         System.out.println("Card number: " + invoke.cardNumber(filename));
-
     }
-
 }

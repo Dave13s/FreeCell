@@ -24,5 +24,4 @@ public class Card {
     public String getSuit() {
         return suits[suit];
     }
-
 }

@@ -83,5 +83,4 @@ public class clickH extends JPanel implements MouseListener, MouseMotionListener
         // TODO Auto-generated method stub
 
     }
-
 }

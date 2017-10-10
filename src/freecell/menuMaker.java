@@ -251,7 +251,6 @@ public class menuMaker {
         int n = JOptionPane.showConfirmDialog(null, params, "Options", JOptionPane.OK_CANCEL_OPTION);
 
         if (n == 0) {
-
             if (hybrid.verboseMode) {
                 System.out.println("User Pressed Ok in Background Box");
             }
@@ -293,14 +292,13 @@ public class menuMaker {
         int n = JOptionPane.showConfirmDialog(null, params, "Options", JOptionPane.OK_CANCEL_OPTION);
     }
 
-
     /*
 	 * This method is for the initial loading of the options from the file to
 	 * the program
      */
     public void initialLoadOptions() {
-
         String line;
+
         try {
             Scanner scanner = new Scanner(new FileReader("options.txt"));
             while (scanner.hasNextLine()) {
@@ -342,5 +340,4 @@ public class menuMaker {
             e1.printStackTrace();
         }
     }
-
 }

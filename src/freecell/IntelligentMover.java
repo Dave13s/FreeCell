@@ -73,51 +73,38 @@ public class IntelligentMover {
                     result = true;
                 }
 
-                // This section detects if there is enough space to transfer the
-                // cards
-                if (i <= hybridMain.getFreeSpaceAvailiable()) {
-                    // if the card in the temp list can be inserted under the
-                    // clicked card allow through
-                    if (result) {
+                // This section detects if there is enough space to transfer the cards
+                //  and if the card in the temp list can be inserted under the
+                // clicked card allow through
+                if (i <= hybridMain.getFreeSpaceAvailiable() && result) {
+                    // add each valid card one at a time
+                    for (int j = i; j >= 0; j--) {
+                        // this finds and rearrange the card
+                        for (int k = 0; k < 52; k++) {
 
-                        // add each valid card one at a time
-                        for (int j = i; j >= 0; j--) {
-                            // this finds and rearrange the card
-                            for (int k = 0; k < 52; k++) {
+                            if (hybridMain.card[k].getName() == tempTranspher[j]) {
 
-                                if (hybridMain.card[k].getName() == tempTranspher[j]) {
+                                hybridMain.card[k].setBounds((hybridMain.colBuffer + hybridMain.colWidth * mainCol), (hybridMain.rowDown + hybridMain.rowOffset
+                                        * (finalRow + i - j)), hybridMain.card[k].getWidth(), hybridMain.card[k].getHeight());
 
-                                    hybridMain.card[k].setBounds((hybridMain.colBuffer + hybridMain.colWidth * mainCol), (hybridMain.rowDown + hybridMain.rowOffset
-                                            * (finalRow + i - j)), hybridMain.card[k].getWidth(), hybridMain.card[k].getHeight());
+                                // Then change the colData library so we know were the card is in the future
+                                hybridMain.colData[mainCol][finalRow + i - j] = tempTranspher[j];
 
-                                    // Then change the colData library so we
-                                    // know
-                                    // were
-                                    // the card
-                                    // is in the future
-                                    hybridMain.colData[mainCol][finalRow + i - j] = tempTranspher[j];
-
-                                    if (hybrid.verboseMode) {
-                                        System.out.println("Removing: " + hybridMain.colData[selectedCol][selectedRow - j]);
-                                    }
-                                    hybridMain.colData[selectedCol][selectedRow - j] = null;
-
-                                    if (hybrid.verboseMode) {
-                                        System.out.println("Added " + tempTranspher[j] + " to new row");
-
-                                    }
-                                    // This section adds and removes the cards
-                                    // from
-                                    // the
-                                    // layer
-                                    // insuring proper z order
-                                    hybridMain.layeredPane.remove(hybridMain.card[k]);
-                                    hybridMain.layeredPane.add(hybridMain.card[k], new Integer(5), 0);
-
-                                    k = 52;
+                                if (hybrid.verboseMode) {
+                                    System.out.println("Removing: " + hybridMain.colData[selectedCol][selectedRow - j]);
                                 }
-                            }
+                                hybridMain.colData[selectedCol][selectedRow - j] = null;
 
+                                if (hybrid.verboseMode) {
+                                    System.out.println("Added " + tempTranspher[j] + " to new row");
+
+                                }
+                                // This section adds and removes the cards from the layer insuring proper z order
+                                hybridMain.layeredPane.remove(hybridMain.card[k]);
+                                hybridMain.layeredPane.add(hybridMain.card[k], new Integer(5), 0);
+
+                                k = 52;
+                            }
                         }
                     }
                 }
@@ -194,11 +181,8 @@ public class IntelligentMover {
                     // insuring proper z order layeredPane.remove(card[i]);
                     hybrid.layeredPane.add(hybrid.card[i], new Integer(5), 0);
                 }
-
-                // Then exit the loop i = 52; }
             }
         }
-
     }
 
     // this method is for detecting cards that should be put into the final play
@@ -337,13 +321,11 @@ public class IntelligentMover {
                                     cardMoved = true;
                                 }
                             }
-
                         }
-
                     }
                 }
-
             }
+            
             // this section works in conjunctor with a loop at the top
             // to modify the loop to run through the freecells
             temp++;
@@ -356,6 +338,7 @@ public class IntelligentMover {
 
             }
         }
+        
         // this method will make recursive calls to itself until it stops moving
         // cards
         if (cardMoved) {

@@ -1,9 +1,6 @@
 package freecell;
 
 import java.awt.Dimension;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Scanner;
 
 import javacards.Card;
 import javacards.Deck;
@@ -19,7 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-
 /*
  * This class is the main section 
  * it handles the main management of the cards
@@ -30,9 +26,6 @@ import javax.swing.JTextArea;
  */
 public class hybrid extends JPanel {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
     // various things for jLabel and arrays for data storage
     static JLayeredPane layeredPane;
@@ -828,5 +821,4 @@ public class hybrid extends JPanel {
         // add the new one
         layeredPane.add(back, new Integer(1), 0);
     }
-
 }
